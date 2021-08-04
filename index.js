@@ -3,6 +3,8 @@ const app = express();
 
 const mongoose = require("mongoose");
 
+const cors = require("cors");
+
 //DB connection
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
@@ -20,6 +22,7 @@ mongoose.connection.on("error", (err) => {
 const authRoutes = require("./routes/auth.routes");
 const productRoutes = require("./routes/product.routes");
 //middlewares
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

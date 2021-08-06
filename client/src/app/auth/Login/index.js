@@ -26,64 +26,54 @@ const Login = ({login, auth, spinner}) => {
   return spinner.loading ? (
     <Spinner />
   ) : (
-    <div>
-    <div className="h-screen font-sans login bg-cover" id="login">
-               <div className="container mx-auto h-full flex flex-1 justify-start items-center pl-28">
-                   <div className="w-full max-w-lg">
-                      <div className="leading-loose">
-                        <form 
-                        onSubmit={(e) => onFormSubmit(e)}
-                        className="max-w-sm m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl">
-                            <p className="text-white font-medium text-center text-lg font-bold">LOGIN</p>
-                                <div className="">
-                                   <label className="block text-sm text-white" htmlFor="email">E-mail</label>
-                                   <input 
-                                   onChange={(e) => onChangeForm(e)}
-                                   className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                                    type="email" 
-                                    id="email" 
-                                     placeholder=" e-mail" 
-                                     required
-                                     name="email"
-                                     />
-                                     
-                                </div>
-                                <div className="mt-2">
-                                    <label className="block  text-sm text-white" htmlFor="password">Password</label>
-                                    <input 
-                                    onChange={(e) => onChangeForm(e)}
-                                    className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                                    type="password"
-                                     id="password" 
-                                     placeholder="password"
-                                    name="password"
-                                    required/>
-                                </div>
-
-                               <div className="mt-4 items-center flex justify-between">
-                                 <button 
-                                 className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded"
-                                  type="submit">
-                                  sign in</button>
-                                <Link 
-                                className="inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400"
-                                to="/login">Forgotten password</Link>
-                               </div>
-                               <div className="text-center">
-                                  <Link 
-                                  to="/register"
-                                  className="inline-block right-0 align-baseline font-light text-sm text-500 hover:text-red-400">
-                                  Register 
-                                  </Link>
-                                </div>
-                              </form>
-                  </div>
-                   </div>
-               </div>
-          </div>
-    
-            
-        </div>
+    <div className="bg-marroon h-screen py-24">
+    <form 
+    onSubmit={(e) => onFormSubmit(e)}
+    className="flex bg-beige shadow-lg mx-auto max-w-sm lg:max-w-4xl justify-center">
+        <div className="lg:w-1/2" id="left"></div>
+        <div className="p-8 lg:w-1/2">
+            <h2 className="text-2xl font-semibold text-gray-700 text-center">LOGIN</h2> 
+            <div className="mt-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email Address</label>
+                <input 
+                className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 py-2 px-4 block w-full appearance-none" 
+                type="email"
+                name="email"
+                id="email" 
+                placeholder="email"
+                required
+                />
+            </div>
+            <div className="mt-4">
+                <div className="flex justify-between">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
+                        <Link to="/login" className="text-xs text-gray-500">Forget Password?</Link>
+                        </div>
+                            <input 
+                            onChange={(e) => onChangeForm(e)}
+                            className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 py-2 px-4 block w-full appearance-none" 
+                            type="password"
+                            name="password"
+                            id="password" 
+                         placeholder="password"
+                         required
+                            />
+                        </div>
+                        <div className="mt-8">
+                            <button 
+                            type="submit"
+                            className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">Login</button>
+                        </div>
+                        <div className="mt-4 flex items-center justify-between">
+                            <span className="border-b w-1/5 md:w-1/4"></span>
+                            <Link 
+                            to="/register"
+                            className="text-xs text-gray-500 uppercase">or sign up</Link>
+                            <span className="border-b w-1/5 md:w-1/4"></span>
+                        </div>
+                    </div>
+    </form>
+    </div>
   );
 };
 

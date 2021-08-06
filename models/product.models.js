@@ -9,6 +9,8 @@ const ProductSchema = new Schema({
     favorite: { type: Boolean, default: false },
     category: { type: mongoose.Schema.Types.ObjectId, ref: "Category",required: true},
     description: { type: String,required: true},
+    countInStock: {type: Number,required: true,},
+    imageUrl: {type: String,required: true,},
   }, 
   {
       timestamps: true

@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes middlewares
 app.use("/auth", authRoutes);
-
+app.use("/products", productRoutes);
 //server listening
 const port=8000;
 app.listen(port, () => {

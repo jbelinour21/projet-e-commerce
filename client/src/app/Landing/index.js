@@ -34,13 +34,14 @@ const Landing = ({
             autoFocus
           />
           <span className="absolute ml-2">
-            <i class="fas fa-search text-dark"></i>
+            <i className="fas fa-search text-dark"></i>
           </span>
         </div>
         <div>
-        <span><i class="fas fa-shopping-basket"></i></span>
+        <span><i className="fas fa-shopping-basket"></i></span>
         </div>
       </div>
+    
         
         <div className="relative block md:flex items-center bg-white shadow-xl">
           <div className="relative w-full md:w-2/5 h-full overflow-hidden rounded-t-lg md:rounded-t-none md:rounded-l-lg">
@@ -52,10 +53,7 @@ const Landing = ({
           <div className="w-full md:w-3/5 h-full flex items-center bg-gray-100 rounded-lg">
             <div className="p-12 md:pr-24 md:pl-16 md:py-12">
               <p className="text-gray-600"><span className="text-gray-900">Missguided</span> is a UK-based fashion retailer that has nearly doubled in size since last year. They integrated Stripe to deliver seamless checkout across mobile and web for customers in 100+ countries, all while automatically combating fraud.</p>
-              <Link className="flex items-baseline mt-3 text-indigo-600 hover:text-indigo-900 focus:text-indigo-900" href="">
-                <span>Learn more about our users</span>
-                <span className="text-xs ml-1">&#x279c;</span>
-              </Link>
+              
             </div>
             
           </div>
@@ -74,7 +72,7 @@ const Landing = ({
 {productState.products &&
       productState?.products.map((elProduct) => {
             return (
-<Link to="/productcard">
+<Link to={`/${elProduct._id}`}>
 <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
   <div className="flex items-end justify-end h-56 w-full">
   <img className="object object-cover w-full h-full" src={elProduct.imageUrl} alt={elProduct.name} />

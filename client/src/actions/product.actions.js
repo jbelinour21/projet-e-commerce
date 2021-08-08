@@ -56,7 +56,7 @@ export const createProduct = (data) => async (dispatch) => {
   export const getProductById = (productid) => async (dispatch) => {
     dispatch({ type: SPINNER_LOADING });
     try {
-        const res = await axios.get("http://localhost:8000/products/:productid");
+        const res = await axios.get(`http://localhost:8000/products/${productid}`);
         dispatch({
             type: GET_PRODUCT_BY_ID,
             payload: res.data.product,

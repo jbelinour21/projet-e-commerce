@@ -67,7 +67,7 @@ const createProduct = async (req, res) => {
   }
 };
 
-const getProducteByBrand = async (req, res) => {
+/*const getProducteByBrand = async (req, res) => {
   const productBrand = req.params.productBrand;
   try {
     const invoice = await Invoice.findOne({ reference: invoiceRef }).populate({
@@ -78,9 +78,9 @@ const getProducteByBrand = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ err_message: err });
   }
-};
+};*/
 
-const getProductAutoComplete = async (req, res) => {
+/*const getProductAutoComplete = async (req, res) => {
   const pagination = req.query.pagination ? parseInt(req.query.pagination) : 5;
   const q = req.query.q !== "" ? req.query.q : "";
 
@@ -95,12 +95,12 @@ const getProductAutoComplete = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ err_message: err });
   }
-};
+};*/
 
 module.exports.getProducts = getProducts;
 module.exports.createProduct = createProduct;
 module.exports.deleteProduct = deleteProduct;
 module.exports.updateProduct = updateProduct;
-module.exports.getProductAutoComplete = getProductAutoComplete;
+//module.exports.getProductAutoComplete = getProductAutoComplete;
 module.exports.getProductById = getProductById;
 

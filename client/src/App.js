@@ -9,12 +9,14 @@ import Header from "./app/shared/Header";
 import Footer from "./app/shared/Footer";
 import ProductCard from "./app/ProductCard";
 
+
 function App() {
   return (
     <Provider store={store}>
       <Fragment>
         <Router>
         <Header/>
+        
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/login" component={Login} />

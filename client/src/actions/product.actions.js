@@ -9,7 +9,6 @@ import {
     SPINNER_LOADED,
     PRODUCT_ERROR,
     GET_PRODUCT_BY_ID
-    
   } from "../constants/types";
 
 export const createProduct = (data) => async (dispatch) => {

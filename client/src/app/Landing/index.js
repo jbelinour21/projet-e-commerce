@@ -20,9 +20,8 @@ const Landing = ({
 
 
   return( 
-    <Fragment>
-      <div className="mx-auto p-16 sm:p-24 lg:p-48 bg-beige h-full">
-     
+  <Fragment>
+    <div className="mx-auto p-16 sm:p-24 lg:p-48 bg-beige h-full"> 
      <div className="flex flex-row" >
 
         <div className="flex justify-between items-center w-1/2 my-4">
@@ -41,8 +40,7 @@ const Landing = ({
         <span><i className="fas fa-shopping-basket"></i></span>
         </div>
       </div>
-    
-        
+
         <div className="relative block md:flex items-center bg-white shadow-xl">
           <div className="relative w-full md:w-2/5 h-full overflow-hidden rounded-t-lg md:rounded-t-none md:rounded-l-lg">
             <img className="absolute inset-0 w-full h-full object-cover object-center" src="" alt=""/>
@@ -69,26 +67,30 @@ const Landing = ({
 <div>PRODUITS EN PROMO</div>
 <div>MEILLEURES VENTES</div>
 
+
+<div className="flex flex-row justify-between">
 {productState.products &&
       productState?.products.map((elProduct) => {
             return (
 <Link to={`/${elProduct._id}`}>
 <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-  <div className="flex items-end justify-end h-56 w-full">
-  <img className="object object-cover w-full h-full" src={elProduct.imageUrl} alt={elProduct.name} />
-    <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-      <svg className="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-    </button>
+  <div className="p-6">
+    <img className="object object-cover w-full h-full" src={elProduct.imageUrl} alt={elProduct.name} />
   </div>
-  <div className="px-5 py-3">
+  <div className="px-5 py-3 flex flex-col">
+    <h4 className="text-gray-700 uppercase">{elProduct.category.title}</h4>
     <h3 className="text-gray-700 uppercase">{elProduct.name}</h3>
     <span className="text-gray-500 mt-2">{elProduct.price}</span>
+    <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500 flex flex-row">
+      <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+              Ajouter au panier
+    </button>
   </div>
 </div>
 </Link>
             );
           })}
-
+</div>
    
 </div>
 

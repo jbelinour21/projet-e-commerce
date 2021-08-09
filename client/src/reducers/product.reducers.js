@@ -2,7 +2,7 @@ import {
     CREATE_PRODUCT,
     GET_PRODUCTS,
     PRODUCT_ERROR,
-    GET_PRODUCT_BY_ID
+    GET_PRODUCT_BY_ID,
     
   } from "../constants/types";
   
@@ -42,8 +42,9 @@ import {
             product: payload,
             loading: false,
           };
+          
+        
 
-      
       default:
         return state;
     }

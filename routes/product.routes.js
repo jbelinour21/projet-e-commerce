@@ -6,9 +6,5 @@ router.put("/:productid", productControllers.getProductById);
 router.post("/", productControllers.createProduct);
 router.delete("/:productid", productControllers.deleteProduct);
 router.put("/:productid", productControllers.updateProduct);
-router.get("/auto_complete",productControllers.getProductAutoComplete
-  );
-
-
 
 module.exports = router;

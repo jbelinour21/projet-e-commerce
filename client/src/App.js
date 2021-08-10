@@ -8,6 +8,8 @@ import { store } from "./store";
 import Header from "./app/shared/Header";
 import Footer from "./app/shared/Footer";
 import ProductCard from "./app/ProductCard";
+import Panier from "./app/Panier";
+
 
 
 function App() {
@@ -21,7 +23,8 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/:productid" component={ProductCard} />
+          <Route exact path="/products/:productid" component={ProductCard} />
+          <Route exact path="/panier" component={Panier}/>
         </Switch>
         <Footer/> 
         </Router>

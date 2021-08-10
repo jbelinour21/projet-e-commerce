@@ -22,9 +22,9 @@ const Header = () => {
             </Link>
             
             <Link
-              to="/"
+              to="/panier"
               className=" p-4 align-baseline capitalize text-sm text-black">
-              test
+              panier
             </Link>
           </div>
           

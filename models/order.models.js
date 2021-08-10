@@ -4,10 +4,9 @@ const Schema = mongoose.Schema;
 const uniqueValidator = require("mongoose-unique-validator");
 
 const OrderSchema = new Schema({
-    buyer: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    reference: { type: String, required: true, unique: true, index: true },
-    status: { type: String, default: "pending" }, 
-    items: [
+  user: {type: mongoose.Schema.Types.ObjectId,ref: "User",required: true,},
+  reference: { type: String, required: true, unique: true, index: true },
+  items: [
         {
           product: { type: mongoose.Schema.Types.ObjectId, ref: "Product",required: true},
           quantity: { type: Number, min: 1, required: true },
@@ -18,10 +17,9 @@ const OrderSchema = new Schema({
     description: { type: String,required: true},
     total: { type: Number, min: 0, required: true },
     isPayed: { type: Boolean, default: false },
-    confirmationDate: { type: Date},
  
     adminConfirmation: {
-      signature: { type: String, required: true },
+      //signature: { type: String, required: true },
       status: { type: String, default: "pending" },
       confirmationDate: { type: Date, default: Date.now() },
     },
@@ -44,3 +42,6 @@ OrderSchema.methods.generateReference = function () {
 };
 
 module.exports = mongoose.model("Order", OrderSchema);
+
+
+

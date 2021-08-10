@@ -8,7 +8,8 @@ import {
     SPINNER_LOADING,
     SPINNER_LOADED,
     PRODUCT_ERROR,
-    GET_PRODUCT_BY_ID
+    GET_PRODUCT_BY_ID,
+    SEARCH_PRODUCT,
   } from "../constants/types";
 
 export const createProduct = (data) => async (dispatch) => {
@@ -72,27 +73,20 @@ export const createProduct = (data) => async (dispatch) => {
 
   
   
- /* export const getProductDetails = (id) => async (dispatch) => {
+
+  export const searchProductByName = (query) => async (dispatch) => {
+    dispatch({ type: SPINNER_LOADING });
     try {
-      dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST });
-  
-      const { data } = await axios.get(`/api/products/${id}`);
-  
+      const res = await axios.get(`http://localhost:8000/products/auto_complete?q=${query}`);
       dispatch({
-        type: actionTypes.GET_PRODUCT_DETAILS_SUCCESS,
-        payload: data,
+        type: SEARCH_PRODUCT,
+        payload: res.data.products,
       });
-    } catch (error) {
+    } catch (err) {
       dispatch({
-        type: actionTypes.GET_PRODUCT_DETAILS_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
+        type: PRODUCT_ERROR,
+        payload: err,
       });
     }
+    dispatch({ type: SPINNER_LOADED });
   };
-  
-  export const removeProductDetails = () => (dispatch) => {
-    dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_RESET });
-  };*/

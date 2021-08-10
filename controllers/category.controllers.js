@@ -12,7 +12,7 @@ const updateCategory = async (req, res) => {
   };
 const createCategory = async (req, res) => {  
     try {
-      //test 
+    
       const newCategory = new Category({
         title: req.body.title,
         brand: req.body.brand,

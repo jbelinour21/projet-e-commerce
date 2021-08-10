@@ -5,13 +5,11 @@ import { useParams } from "react-router-dom";
 import {
   getProductById,
 } from "../../actions/product.actions";
-import { useHistory } from "react-router-dom";
-
 import { connect } from "react-redux";
-const ProductCard = ({ getProductById,product }) => {
-  let history = useHistory();
+const ProductCard = ({ getProductById, product }) => {
+
   const { productid } = useParams();
-  
+
   useEffect(() => {
     getProductById(productid);
   }, []);
@@ -19,14 +17,13 @@ const ProductCard = ({ getProductById,product }) => {
   return( 
     <Fragment>
     <div>
-    
       <div className="container mx-auto px-6">
         <div className="md:flex md:items-center">
           <div className="w-full h-64 md:w-1/2 lg:h-96">
-            <img className="h-full w-full rounded-md object-cover max-w-lg mx-auto" src="" alt="Nike Air"/>
+            <img className="h-full w-full rounded-md object-cover max-w-lg mx-auto" src="product?.imageUrl" alt=""/>
           </div>
           <div className="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
-            <h3 className="text-gray-700 uppercase text-lg">{`Product name ${product?.name}`}</h3>
+            <h3 className="text-gray-700 uppercase text-lg">{`Product name: ${product?.name}`}</h3>
             <span className="text-gray-500 mt-3"></span>
             <hr className="my-3"/>
             <div className="mt-2">
@@ -64,18 +61,12 @@ const ProductCard = ({ getProductById,product }) => {
       </div>
    </Fragment>
      );
-    
-    
-   
-        
-
+  
 }
 
 ProductCard.propTypes = {
-  product: PropTypes.object.isRequired,
+  product: PropTypes.object,
   getProductById: PropTypes.func.isRequired,
- 
- 
 };
 const mapStateToProps = (state) => ({
   product: state.productReducer.product,
@@ -83,7 +74,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  
   getProductById,
 };
 

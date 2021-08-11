@@ -1,18 +1,10 @@
 const Cart = require("../models/cart.models");
 const User = require("../models/user.models");
-/*exports.addItemToCart = (req, res) => {
-        const cart = new Cart({
-          cartItems: req.body.cartItems,
-        });
-        cart.save((error, cart) => {
-          if (error) return res.status(400).json({ error });
-          if (cart) {
-            return res.status(201).json({ cart });
-          }
-        });     
-  };*/
+const Product = require("../models/product.models");
 
-  const addItemToCart = async (req, res) => {
+
+
+const addItemToCart = async (req, res) => {
     try {
       const existCart = await Cart.findOne({ user: req.verifiedUser._id });
     if (existCart)
@@ -57,5 +49,16 @@ const User = require("../models/user.models");
     } catch (err) {
       return res.status(500).json({ err_message: err });
     }
+};
+
+
+const getCartItems = async (req, res) => {
+  try{
+    const cartItems = await Cart.find();
+    return res.status(200).json({ cartItems: cartItems });
+  }catch (err) {
+    return res.status(500).json({ err_message: err });
+  }
   };
-  module.exports.addItemToCart = addItemToCart;  
+module.exports.addItemToCart = addItemToCart; 
+module.exports.getCartItems = getCartItems;  

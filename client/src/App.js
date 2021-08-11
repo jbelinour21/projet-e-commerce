@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Login from "./app/auth/Login";
 import Register from "./app/auth/Register";
 import Landing from "./app/Landing";
@@ -9,10 +9,22 @@ import Header from "./app/shared/Header";
 import Footer from "./app/shared/Footer";
 import ProductCard from "./app/ProductCard";
 import Panier from "./app/Panier";
-
-
-
+import OrderPage from "./app/OrderPage";
+import { setAuthToken } from "./utils/setAuthToken";
+import { loadUser } from "./actions/auth.actions";
+import { USER_LOGOUT } from "./constants/types";
 function App() {
+  useEffect(() => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    store.dispatch(loadUser());
+
+    window.addEventListener("storage", () => {
+      if (!localStorage.token) store.dispatch({ type: USER_LOGOUT });
+    });
+  }, []);
+
   return (
     <Provider store={store}>
       <Fragment>
@@ -25,6 +37,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/products/:productid" component={ProductCard} />
           <Route exact path="/panier" component={Panier}/>
+          <Route exact path="/order" component={OrderPage}/>
         </Switch>
         <Footer/> 
         </Router>

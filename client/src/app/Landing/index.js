@@ -15,6 +15,7 @@ const Landing = ({getProducts, productState,searchProductByName,}) => {
   useEffect(() => {
     getProducts();
   }, []);
+ 
   const onChangeSearch = async (e) => {
     e.preventDefault();
     await setSearchName(e.target.value);
@@ -25,8 +26,9 @@ const Landing = ({getProducts, productState,searchProductByName,}) => {
   return( 
   <Fragment>
     <div className="bg-beige h-full"> 
+    <div className="h-1/2">
     <div id="carouselExampleControls" className="carousel slide flex items-center mx-48" data-bs-ride="carousel">
-  <div className="carousel-inner">
+      <div className="carousel-inner">
     <div className="carousel-item active">
       <img src="https://images.pexels.com/photos/90297/pexels-photo-90297.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="d-block w-100" alt="..."/>
     </div>
@@ -46,7 +48,7 @@ const Landing = ({getProducts, productState,searchProductByName,}) => {
     <span className="visually-hidden">Next</span>
   </button>
 </div>
-
+    </div>
         <div className="flex justify-between items-center w-1/3 my-4">
           <input
             name="searchInvoice"
@@ -61,10 +63,6 @@ const Landing = ({getProducts, productState,searchProductByName,}) => {
             <i className="fas fa-search text-dark"></i>
           </span>
         </div>
-     
-
-        
-
 
 
 <div className="flex flex-row justify-between mx-10">
@@ -81,7 +79,6 @@ const Landing = ({getProducts, productState,searchProductByName,}) => {
     <h4 className="text-gray-700 uppercase">{elProduct.category.title}</h4>
     <h3 className="text-gray-700 uppercase">{elProduct.name}</h3>
     <span className="text-gray-500 mt-2">{elProduct.price}</span> 
-      
   </div>
   </Link>
   <button 
@@ -90,23 +87,12 @@ const Landing = ({getProducts, productState,searchProductByName,}) => {
   </button>
 </div>
 
- 
- 
-
- 
             );
           })}
          
 </div>
-
-
-   
-</div>
-
-   
-    </Fragment>
-   
-        
+</div>  
+    </Fragment>       
     );
 };
 Landing.propTypes = {

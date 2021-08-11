@@ -20,5 +20,15 @@ export const UPDATE_PRODUCT    = "GET_INVOICES" ;
 export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
 export const SEARCH_PRODUCT    = "SEARCH_PRODUCT";
 
+//cartItems
+export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
+export const GET_CART_ITEMS   = "GET_CART_ITEMS";
+export const CART_ERROR       = "CART_ERROR";
+
+//category
+export const GET_CATEGORIES = "GET_CATEGORIES";
+export const CATEGORY_ERROR     = "CATEGORY_ERROR";
+
+
 
 

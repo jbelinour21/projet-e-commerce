@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
-const Header = () => {
+import { Link, useRouteMatch } from "react-router-dom";
+import { logout } from "../../../actions/auth.actions";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+const Header = ({auth,logout}) => {
 
   return (
    
@@ -27,7 +29,7 @@ const Header = () => {
               panier
             </Link>
           </div>
-          
+          {!auth.isAuthenticated && (
             <div className="flex items-center justify-end w-1/3 gap-4">
               <Link
                 to="/login"
@@ -40,10 +42,21 @@ const Header = () => {
                 Register
               </Link>
             </div>
-
+          )}
             
-           <div className="col-md-9 lab-menu-horizontal">
-           </div> 
+          
+           {auth.isAuthenticated && (
+            <div className="flex items-center justify-end w-1/3 gap-4">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  logout();
+                }}
+                className=" p-4 align-baseline font-bold capitalize text-sm text-primary hover:text-primary-shade">
+                Logout
+              </button>
+            </div>
+          )}
          
          
         </nav>
@@ -52,4 +65,16 @@ const Header = () => {
   );
 };
 
-export default Header
+Header.propTypes = {
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
+};
+const mapStateToProps = (state) => ({
+  auth: state.authReducer,
+});
+
+const mapDispatchToProps = {
+  logout,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

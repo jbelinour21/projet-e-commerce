@@ -7,12 +7,15 @@ import {
   getProducts,
   searchProductByName,
 } from "../../actions/product.actions";
+import {
+  addItemToCart,
+} from "../../actions/cart.actions";
 
-
-const Landing = ({getProducts, productState,searchProductByName,}) => {
+const Landing = ({getProducts, productState,searchProductByName,addItemToCart}) => {
   const [SearchName, setSearchName] = useState("");
 
   useEffect(() => {
+
     getProducts();
   }, []);
  
@@ -21,6 +24,17 @@ const Landing = ({getProducts, productState,searchProductByName,}) => {
     await setSearchName(e.target.value);
     await searchProductByName(e.target.value);
   };
+  const createItem = async (e) => {
+    e.preventDefault();
+    //await addItemTocart();
+  };
+
+ 
+
+
+
+  
+
 
  
   return( 
@@ -49,7 +63,7 @@ const Landing = ({getProducts, productState,searchProductByName,}) => {
   </button>
 </div>
     </div>
-        <div className="flex justify-between items-center w-1/3 my-4">
+      <div className="flex justify-between items-center w-1/3 my-4">
           <input
             name="searchInvoice"
             placeholder="Keyword"
@@ -64,7 +78,9 @@ const Landing = ({getProducts, productState,searchProductByName,}) => {
           </span>
         </div>
 
+     
 
+        
 <div className="flex flex-row justify-between mx-10">
 {productState.products &&
       productState?.products.map((elProduct) => {
@@ -82,14 +98,13 @@ const Landing = ({getProducts, productState,searchProductByName,}) => {
   </div>
   </Link>
   <button 
+  onClick={(e) => createItem(e)}
   className="p-2 bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
       Ajouter au panier
   </button>
 </div>
-
             );
-          })}
-         
+          })}       
 </div>
 </div>  
     </Fragment>       
@@ -99,15 +114,18 @@ Landing.propTypes = {
   getProducts: PropTypes.func.isRequired,
   productState: PropTypes.object.isRequired, 
   searchProductByName: PropTypes.func.isRequired,
+  addItemToCart: PropTypes.func.isRequired,
+  cartState: PropTypes.object.isRequired, 
 };
 const mapStateToProps = (state) => ({
   productState: state.productReducer,
+  cartState: state.cartReducer,
 });
 
 const mapDispatchToProps = {
   getProducts,
   searchProductByName,
+  addItemToCart,
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
 

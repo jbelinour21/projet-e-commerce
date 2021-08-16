@@ -1,35 +1,34 @@
 const Cart = require("../models/cart.models");
 const User = require("../models/user.models");
 const Product = require("../models/product.models");
-
 const addItemToCart = async (req, res) => {
   try {
     const existCart = await Cart.findOne({ user: req.verifiedUser._id });
     if (existCart)
       {
         const item = existCart.cartItems.find((c) => c.product == req.body.productData.product);
-        let newquantity =item.quantity+req.body.carItems.quantity;
-        if(item){         
+        
+        let newquantity =item.quantity+req.body.productData.quantity;
+        
+        if(item){   
+              
         const updatedCart= await Cart.findOneAndUpdate({"user": req.verifiedUser._id},{
           "$set":{
             "cartItmes":{
-              ...req.body.cartItems,
+              ...req.body.productData,
               quantity:newquantity }
           }
         });
-        const savedCart = await updatedCart.save();
+      
+        
+      const savedCart = await updatedCart.save();
         return res.status(201).json({ cart: savedCart });
-
         }
         else{
           existCart.cartItems.push(req.body.productData)
           await existCart.save()
-
         return res.status(201).json({ cart: existCart });
-
-        }
-        
-        
+        }       
       }
       else{
       const newCart = new Cart({

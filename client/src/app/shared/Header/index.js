@@ -10,11 +10,10 @@ const Header = ({auth,logout}) => {
       <header>
         <nav className="flex items-center justify-between px-4 border-b border-gray-200 bg-beige">
           <div className="flex items-center justify-start w-1/3 gap-4">
-            <Link
-              to="/"
-              className=" p-4 align-baseline capitalize text-sm text-marroon">
+            <span
+              className=" p-4 align-baseline capitalize text-sm text-black">
               Logo
-            </Link>
+            </span>
           </div>
           <div className="flex items-center justify-center w-2/3 gap-12">
             <Link

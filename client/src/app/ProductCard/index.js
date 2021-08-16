@@ -18,42 +18,34 @@ const [Items, setItems] = useState([
   {quantity: ""},
 ]);
 
-    return (
-    <Fragment>
-   
-           
-  {/* {`Product number #${productid}`}*/}
-<div className="text-gray-700 body-font overflow-hidden bg-white">
-  <div className="container px-5 py-24 mx-auto">
-    <div className="lg:w-4/5 mx-auto flex flex-wrap">
-      <img alt="ecommerce" 
-      className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200 h-96"
-       src={product?.imageUrl}/>
-      <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-        <h2 className="text-sm title-font text-gray-500 tracking-widest">{product?.name}</h2>
-        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product?.category.title}</h1>
-        <div className="flex mb-4">
-          <span className="flex items-center">  
-          </span>
-        </div>
-        <p className="py-8 leading-relaxed">{product?.category.brand}</p>{/*brand*/}
-        <div class="flex flex-row gap-4 items-baseline">
-                  <label
-                    class="block text-dark text-sm font-normal mb-2"
-                    for="quantity">
-                    Quantity
-                  </label>
-                  <input
-                   
-                    class="mb-10 appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
-                    name="quantity"
-                    id="quantity"
-                    type="number"
-                    min={0}
-                    required
-                    placeholder="Qty"
-                  />
-                </div>
+  return (
+  <Fragment>
+      <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product?.category.title}</h1>
+      <div className="text-gray-700 body-font overflow-hidden bg-white">
+        <div className="container px-5 py-24 mx-auto">
+          <div className="lg:w-4/5 mx-auto flex flex-wrap">
+            <img alt="..." 
+            className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200 h-96"
+            src={product?.imageUrl}/>
+            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+              <h1 className="text-gray-500 tracking-widest">{product?.name}</h1>     
+              <p className="py-8 leading-relaxed">{product?.category.brand}</p>
+              <div className="flex flex-row gap-4 items-baseline">
+                <label
+                className="block text-dark text-sm font-normal mb-2"
+                htmlFor="quantity">
+                Quantity
+                </label>
+                <input
+                className="mb-10 appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:shadow-outline"
+                name="quantity"
+                id="quantity"
+                type="number"
+                min={0}
+                required
+                placeholder="Qty"
+                />
+              </div>
         <div className="flex mb-4">
           <span className="title-font font-medium text-2xl text-gray-900">{product?.price} TND</span>
           <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add to cart</button>

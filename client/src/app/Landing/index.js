@@ -15,7 +15,6 @@ const Landing = ({getProducts, productState,searchProductByName,addItemToCart}) 
   const [SearchName, setSearchName] = useState("");
 
   useEffect(() => {
-
     getProducts();
   }, []);
  
@@ -33,17 +32,17 @@ const Landing = ({getProducts, productState,searchProductByName,addItemToCart}) 
   <Fragment>
     <div className="bg-beige h-full"> 
     {/*carousel*/}
-      <div className="">
+      
         <div id="carouselExampleControls" className="carousel slide flex items-center mx-48" data-bs-ride="carousel">
           <div className="carousel-inner">
             <div className="carousel-item active">
-      <img src="https://images.pexels.com/photos/90297/pexels-photo-90297.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="d-block w-100" alt="..."/>
+      <img src="https://images.pexels.com/photos/2253833/pexels-photo-2253833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="d-block w-100" alt="..."/>
     </div>
             <div className="carousel-item">
-              <img src="https://images.pexels.com/photos/90297/pexels-photo-90297.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="d-block w-100" alt="..."/>
+              <img src="https://images.pexels.com/photos/354962/pexels-photo-354962.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="d-block w-100" alt="..."/>
             </div>
             <div className="carousel-item">
-              <img src="https://images.pexels.com/photos/90297/pexels-photo-90297.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="d-block w-100" alt="..."/>
+              <img src="https://images.pexels.com/photos/234220/pexels-photo-234220.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="d-block w-100" alt="..."/>
             </div>
           </div>
           <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -55,15 +54,15 @@ const Landing = ({getProducts, productState,searchProductByName,addItemToCart}) 
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-      </div>
+      
     
     
     {/*search*/}
     <div className="flex justify-between items-center w-1/3 my-4">
           <input
-            name="searchInvoice"
+            name="searchProduct"
             placeholder="Keyword"
-            className="py-2 pr-4 pl-8 rounded focus:outline-none w-full text-dark shadow"
+            className="py-2 pr-4 pl-8 rounded focus:outline-none w-full text-dark"
             type="text"
             autoFocus
             onChange={(e) => onChangeSearch(e)}
@@ -81,10 +80,9 @@ const Landing = ({getProducts, productState,searchProductByName,addItemToCart}) 
 {productState.products &&
       productState?.products.map((elProduct) => {
             return (
-
-<div className="rounded-md shadow-md overflow-hidden flex flex-col items-center">
+<div className="rounded-md border overflow-hidden flex flex-col items-center mx-6">
 <Link to={`/products/${elProduct._id}`}>
-  <div className="p-10">
+  <div className="p-3">
     <img className="object object-cover w-full h-full" src={elProduct.imageUrl} alt={elProduct.name} />
   </div>
   <div className="flex flex-col justify-center items-center">
@@ -95,7 +93,7 @@ const Landing = ({getProducts, productState,searchProductByName,addItemToCart}) 
   </Link>
   <button 
   onClick={(e) => createItem(e)}
-  className="p-2 bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+  className="p-2 bg-black text-white hover:bg-blue-500 focus:outline-none mb-3">
       Ajouter au panier
   </button>
 </div>

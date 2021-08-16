@@ -8,7 +8,7 @@ const Header = ({auth,logout}) => {
   return (
    
       <header>
-        <nav className="flex items-center justify-between py-2 px-4 border-b border-gray-200 bg-beige">
+        <nav className="flex items-center justify-between px-4 border-b border-gray-200 bg-beige">
           <div className="flex items-center justify-start w-1/3 gap-4">
             <Link
               to="/"

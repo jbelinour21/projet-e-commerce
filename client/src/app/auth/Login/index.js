@@ -4,7 +4,7 @@ import { login } from "../../../actions/auth.actions";
 import PropTypes from "prop-types";
 import Spinner from "../../shared/Spinner";
 import { connect } from "react-redux";
-
+import './login.css';
 const Login = ({login, auth, spinner}) => {
   const [loginForm, setloginForm] = useState({
     email: "",
@@ -29,13 +29,14 @@ const Login = ({login, auth, spinner}) => {
     <div className="bg-marroon h-screen py-24">
       <form 
       onSubmit={(e) => onFormSubmit(e)}
-      className="flex bg-beige shadow-lg justify-center">
-        
-        
+      className="flex bg-beige shadow-lg mx-auto max-w-sm lg:max-w-4xl justify-center">
+        <div className="lg:w-1/2" id="left"></div>
+        <div className="p-8 lg:w-1/2">
           <h2 className="text-2xl font-semibold text-gray-700 text-center">LOGIN</h2> 
           <div className="mt-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email Address</label>
             <input 
+            onChange={(e) => onChangeForm(e)}
             className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 py-2 px-4 block w-full appearance-none" 
             type="email"
             name="email"
@@ -71,7 +72,7 @@ const Login = ({login, auth, spinner}) => {
             className="text-xs text-gray-500 uppercase">or sign up</Link>
             <span className="border-b w-1/5 md:w-1/4"></span>
           </div>
-        
+        </div>
       </form>
     </div>
   );
